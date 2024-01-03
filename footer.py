@@ -14,7 +14,7 @@ class Footer(Frame):
         self.version.pack(side='left', fill='y')
         self.version.config(bg = '#9A6FE0', width=500, height=40)
         self.v = Label(self.version, bg = '#9A6FE0', text= "bar Anadon v1.0")
-        self.v.pack(fill='both')
+        self.v.pack(anchor='center', fill='both')
         self.v.config(bg='#525252', font=("Verdana", 16), padx=8)
         self.author = Frame(self)
         self.author.pack(side='right', fill='y')

@@ -11,6 +11,7 @@ h = 600
 root.geometry(str(w) + "x" + str(h) + "+" + str(x) + "+" + str(y))
 root.resizable(0,0)
 root.configure(bg='#525252')
+root.title("")
 header = Header(root)
 body = Body(root)
 footer = Footer(root)
