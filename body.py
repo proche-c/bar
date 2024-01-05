@@ -66,11 +66,7 @@ class Body(Frame):
         self.blank = Frame(self, bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=400)
         self.blank.pack(fill='both')
         self.blank.config(bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=460)
-
-    # def create_blank(self):
-    #     self.blank = Frame(self, bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=400)
-    #     self.blank.pack(fill='both')
-    #     self.blank.config(bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=460)   
+ 
 
     def mostrar_pedidos(self):
         self.blank.pack_forget()
@@ -80,7 +76,6 @@ class Body(Frame):
         if self.active_adcion == 1:
             self.window_adtion.pack_forget()
             self.active_adcion = 0
-        print("llego aqui pedidos")
         self.window_pedidos = Frame(self, bg='#F21D7D', bd=2, relief='ridge', width=1000, height=400)
         self.window_pedidos.pack(fill='both')
         self.active_pedidos = 1
@@ -93,7 +88,6 @@ class Body(Frame):
         if self.active_adcion == 1:
             self.window_adtion.pack_forget()
             self.active_adcion = 0
-        print("llego aqui pedidos")
         self.window_mesas = Frame(self, bg='#A71DF2', bd=2, relief='ridge', width=1000, height=400)
         self.window_mesas.pack(fill='both')
         self.active_mesas = 1
@@ -105,7 +99,6 @@ class Body(Frame):
             self.active_mesas = 0
         if self.active_adcion == 1:
             self.window_adtion.pack_forget()
-        #print("llego aqui")
         self.window_adcion = Frame(self, bg='#86F556', bd=2, relief='ridge', width=1000, height=400)
         self.window_adcion.pack(fill='both')
         self.active_adcion = 1
