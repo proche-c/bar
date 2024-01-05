@@ -7,28 +7,15 @@ class Body(Frame):
         self.master = master
         self.pack(fill='both')
         self.config(bg='#ECE8F7')
+        self.active_pedidos = 0
+        self.active_mesas = 0
+        self.active_adcion = 0
         self.create_widgets()
 
-    def abrir_pedidos(self):
-        pass
-        # self.screen_pedidos = Frame(self.blank)
-        # self.screen_pedidos.pack(anchor='n', fill='y')
-        # self.screen_pedidos.config(bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=400)
-        # self.label_prueba_pedidos = Label(self.screen_pedidos, text='PPPEDIDOS')
-        # self.label_prueba_pedidos.pack()
-
-    def abrir_mesas(self):
-        pass
-        # self.screen_mesas = Frame(self.blank)
-
-        # self.screen_mesas.pack(anchor='n', fill='both')
-        # self.screen_mesas.config(bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=400)
-        # self.label_prueba_mesas = Label(self.screen_pedidos, text='MESASSS')
-        # self.label_prueba_mesas.pack()
 
     def create_widgets(self):
         self.create_menu()
-        self.create_blank()
+        #self.create_blank()
 
     def create_menu(self):
 
@@ -45,7 +32,7 @@ class Body(Frame):
         self.frame_pedidos.config(bg='#75BCE6', bd=2, relief='ridge', width=300, height=80, padx=80, pady=10)
 
         # Esto es el boton de pedidos
-        self.button_pedidos = Button(self.frame_pedidos, text='PEDIDOS', command=self.abrir_pedidos)
+        self.button_pedidos = Button(self.frame_pedidos, text='PEDIDOS', command=self.mostrar_pedidos)
         self.button_pedidos.grid(row=0, column=0)
         self.frame_pedidos.grid_rowconfigure(0, weight=1)
         self.button_pedidos.config(font=("Verdana", 16), bg='#75BCE6', padx=4, pady=4)
@@ -58,7 +45,7 @@ class Body(Frame):
         self.frame_mesas.config(bg='#75BCE6', bd=2, relief='ridge', width=300, height=80, padx=80, pady=10)
 
         # Esto es el boton de mesas
-        self.button_mesas = Button(self.frame_mesas, text='MESAS', command=self.abrir_pedidos)
+        self.button_mesas = Button(self.frame_mesas, text='MESAS', command=self.mostrar_mesas)
         self.button_mesas.grid(row=0, column=0)
         self.frame_mesas.grid_rowconfigure(0, weight=1)
         self.button_mesas.config(font=("Verdana", 16), bg='#75BCE6', padx=4, pady=4)
@@ -71,12 +58,54 @@ class Body(Frame):
         self.frame_adcion.config(bg='#75BCE6', bd=2, relief='ridge', width=395, height=80, padx=80, pady=10)
 
         # Esto es el boton de panel de administracion
-        self.button_adcion = Button(self.frame_adcion, text='PANEL DE ADMINISTRACION', command=self.abrir_pedidos)
+        self.button_adcion = Button(self.frame_adcion, text='PANEL DE ADMINISTRACION', command=self.mostrar_adcion)
         self.button_adcion.grid(row=0, column=0)
         self.frame_adcion.grid_rowconfigure(0, weight=1)
         self.button_adcion.config(font=("Verdana", 16), bg='#75BCE6', padx=4, pady=4)
 
-    def create_blank(self):
         self.blank = Frame(self, bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=400)
         self.blank.pack(fill='both')
-        self.blank.config(bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=460)   
+        self.blank.config(bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=460)
+
+    # def create_blank(self):
+    #     self.blank = Frame(self, bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=400)
+    #     self.blank.pack(fill='both')
+    #     self.blank.config(bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=460)   
+
+    def mostrar_pedidos(self):
+        self.blank.pack_forget()
+        if self.active_mesas == 1:
+            self.window_mesas.pack_forget()
+            self.active_mesas = 0
+        if self.active_adcion == 1:
+            self.window_adtion.pack_forget()
+            self.active_adcion = 0
+        print("llego aqui pedidos")
+        self.window_pedidos = Frame(self, bg='#F21D7D', bd=2, relief='ridge', width=1000, height=400)
+        self.window_pedidos.pack(fill='both')
+        self.active_pedidos = 1
+
+    def mostrar_mesas(self):
+        self.blank.pack_forget()
+        if self.active_pedidos == 1:
+            self.window_pedidos.pack_forget()
+            self.active_pedidos = 0
+        if self.active_adcion == 1:
+            self.window_adtion.pack_forget()
+            self.active_adcion = 0
+        print("llego aqui pedidos")
+        self.window_mesas = Frame(self, bg='#A71DF2', bd=2, relief='ridge', width=1000, height=400)
+        self.window_mesas.pack(fill='both')
+        self.active_mesas = 1
+
+    def mostrar_adcion(self):
+        self.blank.pack_forget()
+        if self.active_mesas == 1:
+            self.window_mesas.pack_forget()
+            self.active_mesas = 0
+        if self.active_adcion == 1:
+            self.window_adtion.pack_forget()
+        #print("llego aqui")
+        self.window_adcion = Frame(self, bg='#86F556', bd=2, relief='ridge', width=1000, height=400)
+        self.window_adcion.pack(fill='both')
+        self.active_adcion = 1
