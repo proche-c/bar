@@ -15,7 +15,6 @@ class Body(Frame):
 
     def create_widgets(self):
         self.create_menu()
-        #self.create_blank()
 
     def create_menu(self):
 

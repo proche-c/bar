@@ -1,4 +1,4 @@
-from product import *
+from producto import *
 
 class   Order:
     def __init__(self, client):
@@ -9,7 +9,7 @@ class   Order:
         self.remaining = 0
 
     def add_product(self, product):
-        self.products.add(product)
+        self.products.append(product)
 
     def remove_product(self, name):
         for i in range(self.products):
@@ -17,6 +17,10 @@ class   Order:
                 self.products.remove(i)
                 break
 
-    def pay(self, products_to_pay):
-        for p in products_to_pay:
+    def pay_total(self):
+        for p in self.products:
             self.paid = self.paid + p.prize
+
+    def pay_product(self, product_to_pay):
+        product_to_pay.paid = 1
+        self.paid = self.paid + product_to_pay.prize
