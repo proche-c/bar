@@ -17,14 +17,19 @@ from producto import *
 # l_clientes.add_cliente("Manola y Marina")
 # print(l_clientes.lista_clientes)
 
-articulo = []
-p = ["Quinto o caña", "1.2", "Cervezas\n"]
-articulo.append(p)
-p = ["Tercio o copa", "1.5", "Cervezas\n"]
-articulo.append(p)
-p = ["Cubata normal", "4.5", "Bebidas\n"]
-articulo.append(p)
-fichero_articulos = open('articulos.txt', 'w')
-for a in articulo:
-    fichero_articulos.writelines(a)
-fichero_articulos.close()
+# articulo = []
+# p = ["Quinto o caña", "1.2", "Cervezas"]
+# articulo.append(p)
+# p = ["Tercio o copa", "1.5", "Cervezas"]
+# articulo.append(p)
+# p = ["Cubata normal", "4.5", "Bebidas"]
+# articulo.append(p)
+# fichero_articulos = open('articulos.txt', 'w')
+# for a in articulo:
+#     fichero_articulos.write(a[0])
+#     fichero_articulos.write(",")
+#     fichero_articulos.write(a[1])
+#     fichero_articulos.write(",")
+#     fichero_articulos.write(a[2])
+#     fichero_articulos.write("\n")
+# fichero_articulos.close()

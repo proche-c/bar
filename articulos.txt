@@ -1,3 +1,4 @@
-Quinto o caña1.2Cervezas
-Tercio o copa1.5Cervezas
-Cubata normal4.5Bebidas
+Quinto o caña,1.2,Cervezas
+Tercio o copa,1.5,Cervezas
+Cafe con chorrada,1.2,Cafes
+Cafe Cortado,1.0,Cafes

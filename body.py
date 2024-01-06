@@ -1,4 +1,7 @@
 from tkinter import *
+from mesas import *
+from all_orders import *
+from functools import partial
 
 class Body(Frame):
 
@@ -11,6 +14,7 @@ class Body(Frame):
         self.active_mesas = 0
         self.active_adcion = 0
         self.create_widgets()
+        self.all_orders = AllOrders()
 
 
     def create_widgets(self):
@@ -44,7 +48,7 @@ class Body(Frame):
         self.frame_mesas.config(bg='#75BCE6', bd=2, relief='ridge', width=300, height=80, padx=80, pady=10)
 
         # Esto es el boton de mesas
-        self.button_mesas = Button(self.frame_mesas, text='MESAS', command=self.mostrar_mesas)
+        self.button_mesas = Button(self.frame_mesas, text='MESAS', command=partial(self.mostrar_mesas, self.all_orders))
         self.button_mesas.grid(row=0, column=0)
         self.frame_mesas.grid_rowconfigure(0, weight=1)
         self.button_mesas.config(font=("Verdana", 16), bg='#75BCE6', padx=4, pady=4)
@@ -70,34 +74,37 @@ class Body(Frame):
     def mostrar_pedidos(self):
         self.blank.pack_forget()
         if self.active_mesas == 1:
-            self.window_mesas.pack_forget()
+            self.t.pack_forget()
             self.active_mesas = 0
         if self.active_adcion == 1:
-            self.window_adtion.pack_forget()
+            self.window_adcion.pack_forget()
             self.active_adcion = 0
         self.window_pedidos = Frame(self, bg='#F21D7D', bd=2, relief='ridge', width=1000, height=400)
         self.window_pedidos.pack(fill='both')
         self.active_pedidos = 1
 
-    def mostrar_mesas(self):
+    def mostrar_mesas(self, all_orders):
         self.blank.pack_forget()
         if self.active_pedidos == 1:
             self.window_pedidos.pack_forget()
             self.active_pedidos = 0
         if self.active_adcion == 1:
-            self.window_adtion.pack_forget()
+            self.window_adcion.pack_forget()
             self.active_adcion = 0
-        self.window_mesas = Frame(self, bg='#A71DF2', bd=2, relief='ridge', width=1000, height=400)
-        self.window_mesas.pack(fill='both')
+        # self.window_mesas = Frame(self, bg='#A71DF2', bd=2, relief='ridge', width=1000, height=400)
+        # self.window_mesas.pack(fill='both')
+        self.t = Tables(self, all_orders)
         self.active_mesas = 1
 
     def mostrar_adcion(self):
         self.blank.pack_forget()
         if self.active_mesas == 1:
-            self.window_mesas.pack_forget()
+            self.t.pack_forget()
             self.active_mesas = 0
-        if self.active_adcion == 1:
-            self.window_adtion.pack_forget()
+        if self.active_pedidos == 1:
+            self.window_pedidos.pack_forget()
+            self.active_pedidos = 0
+
         self.window_adcion = Frame(self, bg='#86F556', bd=2, relief='ridge', width=1000, height=400)
         self.window_adcion.pack(fill='both')
         self.active_adcion = 1
