@@ -4,8 +4,9 @@ from interfaces.body import *
 from interfaces.footer import *
 from clases.catalogo import *
 from clases.clientes import *
+from clases.all_orders import *
 
-all_orders = []
+all_orders = AllOrders()
 clients = Clients()
 #print(clients.list_clients)
 catalogue = Catalogue()

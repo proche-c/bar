@@ -14,7 +14,7 @@ class   Tables(Frame):
 
     def abrir_pedido(self, name, all_orders):
         new_order = Order(name)
-        all_orders.append(new_order)
+        all_orders.add_order(new_order)
         #print(new_order.client)
 
 
