@@ -15,7 +15,6 @@ class Clients:
             for c_temp in temp:
                 c = c_temp[0:-1]
                 self.list_clients.append(c)
-            #print(self.list_clients)
         else:
             file_temp.close()
 

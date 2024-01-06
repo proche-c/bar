@@ -9,3 +9,4 @@ class   Item:
     def pay_product(self):
         self.paid = 1
 
+

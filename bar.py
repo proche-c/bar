@@ -1,7 +1,14 @@
 from tkinter import *
-from header import *
-from body import *
-from footer import *
+from interfaces.header import *
+from interfaces.body import *
+from interfaces.footer import *
+from clases.catalogo import *
+from clases.clientes import *
+
+all_orders = []
+clients = Clients()
+#print(clients.list_clients)
+catalogue = Catalogue()
 
 root = Tk()
 y = round((root.winfo_screenheight() - 1000) / 2)
@@ -13,6 +20,6 @@ root.resizable(0,0)
 root.configure(bg='#525252')
 root.title("")
 header = Header(root)
-body = Body(root)
+body = Body(all_orders, clients, catalogue, root)
 footer = Footer(root)
 root.mainloop()

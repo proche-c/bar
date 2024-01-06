@@ -1,4 +1,4 @@
-from articulo import *
+from clases.articulo import *
 
 class Catalogue:
     

@@ -1,4 +1,4 @@
-from producto import *
+from clases.producto import *
 
 class   Order:
     def __init__(self, client):
