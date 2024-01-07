@@ -62,7 +62,7 @@ class Body(Frame):
         self.frame_productos.config(bg='#75BCE6', bd=2, relief='ridge', padx=20, pady=10)
 
         # Esto es el boton de mesas
-        self.button_productos = Button(self.frame_productos, text='PRODUCTOS',command=self.mostrar_productos)
+        self.button_productos = Button(self.frame_productos, text='PRODUCTOS',command=partial(self.mostrar_productos, all_orders))
         self.button_productos.grid(row=0, column=0)
         self.frame_productos.grid_rowconfigure(0, weight=1)
         self.button_productos.config(font=("Verdana", 16), bg='#75BCE6', padx=4, pady=4)
@@ -115,7 +115,7 @@ class Body(Frame):
         self.active_mesas = 1
 
 
-    def mostrar_productos(self):
+    def mostrar_productos(self, all_orders):
         self.blank.pack_forget()
         if self.active_mesas == 1:
             self.t.pack_forget()
@@ -126,7 +126,7 @@ class Body(Frame):
         if self.active_adcion == 1:
             self.window_adcion.pack_forget()
             self.active_adcion = 0
-        self.pr = WindowProducts(self)
+        self.pr = WindowProducts(all_orders, self)
         self.active_productos = 1
 
     def mostrar_adcion(self):

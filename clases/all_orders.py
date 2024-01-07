@@ -5,6 +5,7 @@ class   AllOrders():
     def __init__(self):
         self.list_unpaid_orders = []
         self.list_paid_orders = []
+        self.order_runing = None
 
     def add_order(self, new_order):
         existing_order = 0
@@ -24,4 +25,9 @@ class   AllOrders():
                 self.list_unpaid_orders.pop(i)
                 return (0)
         return (-1)
+    
+    def find_order_by_client(self, name):
+        for order in self.list_unpaid_orders:
+            if order.client == name:
+                return (order)        
         
