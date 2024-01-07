@@ -6,12 +6,12 @@ from interfaces.productos import *
 
 class   WindowTables(Frame):
 
-    def __init__(self, all_orders, clients, master=NONE):
+    def __init__(self, all_orders, clients, pr, master=NONE):
         super().__init__(master, bg='#A71DF2', bd=2, relief='ridge', width=1000, height=400)
         self.master = master
-        #self.pack(fill='both')
         self.active_client = ""
-        #self.create_widgets_tables(all_orders, clients)
+        self.window_is_active = 0
+        self.pr = pr
 
 
     def set_pedido_active(self, name, all_orders):
@@ -22,7 +22,10 @@ class   WindowTables(Frame):
         else:
             all_orders.order_runing = all_orders.find_order_by_client(name)   
         self.pack_forget()
-        self.pr = WindowProducts(all_orders, self.master)
+        self.window_is_active = 0
+        self.destroy_widgets_tables()
+        self.pr.pack()
+        self.pr.window_is_active = 1
 
 
     def create_widgets_tables(self, all_orders, clients):
