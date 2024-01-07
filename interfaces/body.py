@@ -83,6 +83,9 @@ class Body(Frame):
         self.blank = Frame(self, bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=400)
         self.blank.pack(fill='both')
         self.blank.config(bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=460)
+
+        self.window_pedidos = Frame(self, bg='#F21D7D', bd=2, relief='ridge', width=1000, height=400)
+        self.t = WindowTables(all_orders, clients, self)
  
 
     def mostrar_pedidos(self):
@@ -96,7 +99,7 @@ class Body(Frame):
         if self.active_adcion == 1:
             self.window_adcion.pack_forget()
             self.active_adcion = 0
-        self.window_pedidos = Frame(self, bg='#F21D7D', bd=2, relief='ridge', width=1000, height=400)
+        #self.window_pedidos = Frame(self, bg='#F21D7D', bd=2, relief='ridge', width=1000, height=400)
         self.window_pedidos.pack(fill='both')
         self.active_pedidos = 1
 
@@ -112,6 +115,8 @@ class Body(Frame):
             self.window_adcion.pack_forget()
             self.active_adcion = 0
         self.t = WindowTables(all_orders, clients, self)
+        self.t.pack(fill='both')
+        self.t.create_widgets_tables(all_orders, clients)
         self.active_mesas = 1
 
 
