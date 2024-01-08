@@ -24,7 +24,7 @@ class   WindowTables(Frame):
             print(new_order.client)
             self.all_orders.order_runing = new_order
         else:
-            all_orders.order_runing = all_orders.find_order_by_client(name)   
+            self.all_orders.order_runing = self.all_orders.find_order_by_client(name)   
         self.pack_forget()
         self.window_is_active = 0
         self.destroy_widgets_tables()

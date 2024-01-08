@@ -101,6 +101,7 @@ class Body(Frame):
             self.a.window_is_active = 0
         #self.window_pedidos = Frame(self, bg='#F21D7D', bd=2, relief='ridge', width=1000, height=400)
         self.p.pack(fill='both')
+        self.p.create_widgets_orders()
         self.p.print_prueba()
         self.p.window_is_active = 1
 
@@ -108,6 +109,7 @@ class Body(Frame):
         self.blank.pack_forget()
         if self.p.window_is_active == 1:
             self.p.pack_forget()
+            self.p.destroy_widgets_orders()
             self.p.window_is_active = 0
         if self.pr.window_is_active == 1:
             self.pr.pack_forget()
@@ -129,6 +131,7 @@ class Body(Frame):
             self.t.window_is_active = 0
         if self.p.window_is_active == 1:
             self.p.pack_forget()
+            self.p.destroy_widgets_orders()
             self.p.window_is_active = 0
         if self.a.window_is_active == 1:
             self.a.pack_forget()
@@ -144,6 +147,7 @@ class Body(Frame):
             self.t.window_is_active = 0
         if self.p.window_is_active == 1:
             self.p.pack_forget()
+            self.p.destroy_widgets_orders()
             self.p.window_is_active = 0
         if self.pr.window_is_active == 1:
             self.pr.pack_forget()
