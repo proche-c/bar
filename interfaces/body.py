@@ -1,5 +1,7 @@
 from tkinter import *
 from interfaces.mesas import *
+from interfaces.pedidos import *
+from interfaces.administracion import *
 from functools import partial
 
 class Body(Frame):
@@ -18,8 +20,8 @@ class Body(Frame):
         self.create_menu(all_orders, clients, catalogue)
 
     def create_instances_subwindows(self, all_orders, clients):
-        self.window_pedidos = Frame(self, bg='#F21D7D', bd=2, relief='ridge', width=1000, height=400)
-        self.window_adcion = Frame(self, bg='#86F556', bd=2, relief='ridge', width=1000, height=400)
+        self.p = WindowOrders(all_orders, self)
+        self.a = WindowAdcion(all_orders, self)
         pr = WindowProducts(all_orders, self)
         self.pr = pr
         self.t = WindowTables(all_orders, clients, pr, self)
@@ -94,24 +96,25 @@ class Body(Frame):
         if self.pr.window_is_active == 1:
             self.pr.pack_forget()
             self.pr.window_is_active = 0
-        if self.active_adcion == 1:
-            self.window_adcion.pack_forget()
-            self.active_adcion = 0
+        if self.a.window_is_active == 1:
+            self.a.pack_forget()
+            self.a.window_is_active = 0
         #self.window_pedidos = Frame(self, bg='#F21D7D', bd=2, relief='ridge', width=1000, height=400)
-        self.window_pedidos.pack(fill='both')
-        self.active_pedidos = 1
+        self.p.pack(fill='both')
+        self.p.print_prueba()
+        self.p.window_is_active = 1
 
     def mostrar_mesas(self, all_orders, clients):
         self.blank.pack_forget()
-        if self.active_pedidos == 1:
-            self.window_pedidos.pack_forget()
-            self.active_pedidos = 0
+        if self.p.window_is_active == 1:
+            self.p.pack_forget()
+            self.p.window_is_active = 0
         if self.pr.window_is_active == 1:
             self.pr.pack_forget()
             self.pr.window_is_active = 0
-        if self.active_adcion == 1:
-            self.window_adcion.pack_forget()
-            self.active_adcion = 0
+        if self.a.window_is_active == 1:
+            self.a.pack_forget()
+            self.a.window_is_active = 0
         #self.t = WindowTables(all_orders, clients, self)
         self.t.pack(fill='both')
         self.t.create_widgets_tables(all_orders, clients)
@@ -124,12 +127,12 @@ class Body(Frame):
             self.t.pack_forget()
             self.t.destroy_widgets_tables()
             self.t.window_is_active = 0
-        if self.active_pedidos == 1:
-            self.window_pedidos.pack_forget()
-            self.active_pedidos = 0
-        if self.active_adcion == 1:
-            self.window_adcion.pack_forget()
-            self.active_adcion = 0
+        if self.p.window_is_active == 1:
+            self.p.pack_forget()
+            self.p.window_is_active = 0
+        if self.a.window_is_active == 1:
+            self.a.pack_forget()
+            self.a.window_is_active = 0
         self.pr.pack(fill='both')
         self.pr.window_is_active = 1
 
@@ -139,12 +142,12 @@ class Body(Frame):
             self.t.pack_forget()
             self.t.destroy_widgets_tables()
             self.t.window_is_active = 0
-        if self.active_pedidos == 1:
-            self.window_pedidos.pack_forget()
-            self.active_pedidos = 0
+        if self.p.window_is_active == 1:
+            self.p.pack_forget()
+            self.p.window_is_active = 0
         if self.pr.window_is_active == 1:
             self.pr.pack_forget()
             self.pr.window_is_active = 0
         #self.window_adcion = Frame(self, bg='#86F556', bd=2, relief='ridge', width=1000, height=400)
-        self.window_adcion.pack(fill='both')
-        self.active_adcion = 1
+        self.a.pack(fill='both')
+        self.a.window_is_active = 1

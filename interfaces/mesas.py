@@ -9,6 +9,8 @@ class   WindowTables(Frame):
     def __init__(self, all_orders, clients, pr, master=NONE):
         super().__init__(master, bg='#A71DF2', bd=2, relief='ridge', width=1000, height=400)
         self.master = master
+        self.all_orders = all_orders
+        self.clients = clients
         self.active_client = ""
         self.window_is_active = 0
         self.pr = pr
@@ -17,8 +19,10 @@ class   WindowTables(Frame):
     def set_pedido_active(self, name, all_orders):
         self.active_client = name
         new_order = Order(name)
-        if all_orders.add_order(new_order) == 0:
-            all_orders.order_runing = new_order
+        if self.all_orders.add_order(new_order) == 0:
+            print("se ha añadido el pedido")
+            print(new_order.client)
+            self.all_orders.order_runing = new_order
         else:
             all_orders.order_runing = all_orders.find_order_by_client(name)   
         self.pack_forget()
@@ -51,7 +55,7 @@ class   WindowTables(Frame):
             self.F2[i] = Frame(self.frame_ext_2)
             self.F2[i].pack(side='left', expand=True, fill='both')
             self.F2[i].config(bg='#D7DEE0', bd=5, relief='ridge', padx=10, pady=6)
-            self.B2[i] = Button(self.F2[i], text=self.list_clients_sorted[i + 5], command=partial(self.set_pedido_active, self.list_clients_sorted[i], all_orders))
+            self.B2[i] = Button(self.F2[i], text=self.list_clients_sorted[i + 5], command=partial(self.set_pedido_active, self.list_clients_sorted[i + 5], all_orders))
             self.B2[i].grid(row=0, column=0)
             self.F2[i].grid_rowconfigure(0, weight=1)
             self.B2[i].config(font=("Verdana", 14), bg='#D7DEE0', padx=2, pady=2)
@@ -63,7 +67,7 @@ class   WindowTables(Frame):
             self.F3[i] = Frame(self.frame_ext_3)
             self.F3[i].pack(side='left', expand=True, fill='both')
             self.F3[i].config(bg='#D7DEE0', bd=5, relief='ridge', padx=10, pady=6)
-            self.B3[i] = Button(self.F3[i], text=self.list_clients_sorted[i + 10], command=partial(self.set_pedido_active, self.list_clients_sorted[i], all_orders))
+            self.B3[i] = Button(self.F3[i], text=self.list_clients_sorted[i + 10], command=partial(self.set_pedido_active, self.list_clients_sorted[i + 10], all_orders))
             self.B3[i].grid(row=0, column=0)
             self.F3[i].grid_rowconfigure(0, weight=1)
             self.B3[i].config(font=("Verdana", 14), bg='#D7DEE0', padx=2, pady=2)
@@ -75,7 +79,7 @@ class   WindowTables(Frame):
             self.F4[i] = Frame(self.frame_ext_4)
             self.F4[i].pack(side='left', expand=True, fill='both')
             self.F4[i].config(bg='#D7DEE0', bd=5, relief='ridge', padx=10, pady=6)
-            self.B4[i] = Button(self.F4[i], text=self.list_clients_sorted[i + 15], command=partial(self.set_pedido_active, self.list_clients_sorted[i], all_orders))
+            self.B4[i] = Button(self.F4[i], text=self.list_clients_sorted[i + 15], command=partial(self.set_pedido_active, self.list_clients_sorted[i + 15], all_orders))
             self.B4[i].grid(row=0, column=0)
             self.F4[i].grid_rowconfigure(0, weight=1)
             self.B4[i].config(font=("Verdana", 14), bg='#D7DEE0', padx=2, pady=2)
@@ -87,7 +91,7 @@ class   WindowTables(Frame):
             self.F5[i] = Frame(self.frame_ext_5)
             self.F5[i].pack(side='left', expand=True, fill='both')
             self.F5[i].config(bg='#D7DEE0', bd=5, relief='ridge', padx=10, pady=6)
-            self.B5[i] = Button(self.F5[i], text=self.list_clients_sorted[i + 20], command=partial(self.set_pedido_active, self.list_clients_sorted[i], all_orders))
+            self.B5[i] = Button(self.F5[i], text=self.list_clients_sorted[i + 20], command=partial(self.set_pedido_active, self.list_clients_sorted[i + 20], all_orders))
             self.B5[i].grid(row=0, column=0)
             self.F5[i].grid_rowconfigure(0, weight=1)
             self.B5[i].config(font=("Verdana", 14), bg='#D7DEE0', padx=2, pady=2)
@@ -99,7 +103,7 @@ class   WindowTables(Frame):
             self.F6[i] = Frame(self.frame_ext_6)
             self.F6[i].pack(side='left', expand=True, fill='both')
             self.F6[i].config(bg='#D7DEE0', bd=5, relief='ridge', padx=10, pady=6)
-            self.B6[i] = Button(self.F6[i], text=self.list_clients_sorted[i + 25], command=partial(self.set_pedido_active, self.list_clients_sorted[i], all_orders))
+            self.B6[i] = Button(self.F6[i], text=self.list_clients_sorted[i + 25], command=partial(self.set_pedido_active, self.list_clients_sorted[i + 25], all_orders))
             self.B6[i].grid(row=0, column=0)
             self.F6[i].grid_rowconfigure(0, weight=1)
             self.B6[i].config(font=("Verdana", 14), bg='#D7DEE0', padx=2, pady=2)
