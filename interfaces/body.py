@@ -83,7 +83,7 @@ class Body(Frame):
 
         self.blank = Frame(self, bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=400)
         self.blank.pack(fill='both')
-        self.blank.config(bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=460)
+        self.blank.config(bg='#F2F7F8', bd=2, relief='ridge', width=1000, height=400)
 
  
 
