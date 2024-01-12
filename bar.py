@@ -17,9 +17,9 @@ catalogue = Catalogue()
 # Se abre la interfaz gráfica
 root = Tk()
 y = round((root.winfo_screenheight() - 1000) / 2)
-x = round((root.winfo_screenwidth() - 600) / 2)
+x = round((root.winfo_screenwidth() - 520) / 2)
 w = 1000
-h = 600
+h = 520
 root.geometry(str(w) + "x" + str(h) + "+" + str(x) + "+" + str(y))
 root.resizable(0,0)
 root.configure(bg='#525252')
